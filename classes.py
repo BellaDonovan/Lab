@@ -16,7 +16,6 @@ class Television:
         self.__volume = Television.MIN_VOLUME
         self.__status = False
 
-    @property
     def power(self) -> None:
         """
         Method to turn the tv on/off
@@ -35,19 +34,19 @@ class Television:
 
         if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
-                self.__channel +=1
+                self.__channel += 1
             else:
                 self.__channel = Television.MIN_CHANNEL
 
     def channel_down(self) -> None:
-       """
-       Method to decrease the TV channel
-       :return: Current TV channel
-       """
+        """
+        Method to decrease the TV channel
+        :return: Current TV channel
+        """
         if self.__status:
             if self.__channel == Television.MIN_CHANNEL:
                 self.__channel = Television.MAX_CHANNEL
-            elif self.__channel < Television.MAX_CHANNEL:
+            elif self.__channel <= Television.MAX_CHANNEL:
                 self.__channel -= 1
 
     def volume_up(self) -> None:
@@ -69,12 +68,12 @@ class Television:
         if self.__status:
             if self.__volume == Television.MIN_VOLUME:
                 self.__volume = self.__volume
-            elif self.__volume < Television.MAX_VOLUME:
+            elif self.__volume <= Television.MAX_VOLUME:
                 self.__volume -= 1
 
-    def __str__(self) -> str:
+    def __str__(self):
         """
         Method to print the volume, channel, and status (on/off) of the TV
         :return: Printed status, volume, and channel of the TV
         """
-        return f'TV status: Is on = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}'
+        return (f'TV status: Is on = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}')
